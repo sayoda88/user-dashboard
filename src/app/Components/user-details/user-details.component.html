@@ -1,0 +1,43 @@
+<div class="container mt-4 mb-4">
+    <div class="row mt-4">
+      <div class="col-12 d-flex justify-content-between align-items-center mb-3 bg-light">
+        <h1 class="h3 mb-2 me-2 text-primary">User Details</h1>
+        <a class="btn btn-secondary" routerLink="/users">Back to Users</a>
+      </div>
+    </div>
+  
+    <div class="row" *ngIf="isLoading">
+      <div class="col-12">
+        <p-progressBar mode="indeterminate"></p-progressBar>
+      </div>
+    </div>
+  
+    <div class="row" *ngIf="user">
+      <div class="col-md-6 col-sm-12 mb-4">
+        <div class="card">
+            <img [src]="user.data.avatar" class="img-fluid user-avatar" alt="User Avatar">
+            <div class="card-body">
+            <h5 class="card-title">{{ user.data.first_name }} {{ user.data.last_name }}</h5>
+            <p class="card-text">ID: {{ user.data.id }}</p>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Email: {{ user.data.email }}</li>
+              <li class="list-group-item">Phone: {{ user.data.phone }}</li>
+            </ul>
+            </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row" *ngIf="error">
+      <div class="col-12">
+        <p class="alert alert-danger">Error loading user data!</p>
+      </div>
+    </div>
+  
+    <div class="row" *ngIf="!user && !isLoading">
+      <div class="col-12">
+        <p class="alert alert-info">No user data found.</p>
+      </div>
+    </div>
+  </div>
+  
